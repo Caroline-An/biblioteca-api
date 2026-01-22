@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TIPO")
 @Table(name = "tbl_pessoas")
 public class Pessoas {
     @Id
@@ -18,6 +20,6 @@ public class Pessoas {
     private Long id;
 
     @Column(name = "NOME", nullable = false)
-    private String nome;
+    private String name;
 
 }
