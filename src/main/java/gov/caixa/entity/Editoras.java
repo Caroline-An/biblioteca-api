@@ -1,0 +1,37 @@
+package gov.caixa.entity;
+
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "tbl_editoras")
+public class Editoras {
+
+    @Id
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "NOME", nullable = false)
+    private String nome;
+
+    @Column(name = "CNPJ", nullable = false)
+    private String cnpj;
+
+    @Column(name = "ENDEREÇO", nullable = false)
+    private String endereco;
+
+    @Column(name = "TELEFONE", nullable = false)
+    private String telefone;
+
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
+
+}
