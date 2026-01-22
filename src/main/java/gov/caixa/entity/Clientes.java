@@ -1,0 +1,25 @@
+package gov.caixa.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "tbl_clientes")
+public class Clientes extends Pessoas{
+    @Column(name = "CPF", nullable = false)
+    private String cpf;
+
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
+
+    @Column(name = "TELEFONE", nullable = false)
+    private String telefone;
+}

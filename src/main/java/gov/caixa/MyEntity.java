@@ -2,6 +2,10 @@ package gov.caixa;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jdk.jfr.DataAmount;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 /**
@@ -23,6 +27,7 @@ import jakarta.persistence.Entity;
  *     }
  * }
  */
+
 @Entity
 public class MyEntity extends PanacheEntity {
     public String field;
