@@ -1,41 +1,25 @@
 package gov.caixa.resource.dto.request;
 
-
-import gov.caixa.entity.Categoria;
 import gov.caixa.entity.Editora;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class LivroRequest {
-    @NotBlank(message = "O campo ISBN não pode ser blank!")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int isbn;
+public record LivroRequest(
+        @NotBlank(message = "O campo ISBN não pode ser blank!")
+        int isbn,
 
-    @NotNull
-    private String title;
+        @NotNull
+        String title,
 
-    @NotNull
-    private int numeroDePaginas;
+        @NotNull
+        Integer numeroDePaginas,
 
-    @NotNull
-    private int anoPublicacao;
+        @NotNull
+        Integer anoPublicacao,
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "CATEGORIA", nullable = false, length = 30)
-    private Categoria categoria;
+        @NotNull
+        Integer categoriaId,
 
-    @NotNull
-    @Column(name = "EDITORA")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "editora_id", nullable = false,
-            foreignKey = @ForeignKey(name = "fk_livro_editora"))
-    private Editora editora;
+        @NotNull
+        Integer editoraId) {
 }

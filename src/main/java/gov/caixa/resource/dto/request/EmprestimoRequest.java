@@ -6,24 +6,19 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class EmprestimoRequest {
-    @NotNull
-    private int id;
+public record EmprestimoRequest(
+        @NotNull
+        int id,
 
-    @NotNull
-    private Livro livro;
+        @NotNull
+        Livro livro,
 
-    @NotNull
-    private LocalDate dataEmprestimo;
+        @NotNull
+        LocalDate dataEmprestimo,
 
-    @NotNull
-    private LocalDate dataPrevisaDevolucao;
+        @NotNull
+        LocalDate dataPrevisaDevolucao,
 
-    @NotNull
-    private boolean devolvido;
+        @NotNull
+        boolean devolvido) {
 }
