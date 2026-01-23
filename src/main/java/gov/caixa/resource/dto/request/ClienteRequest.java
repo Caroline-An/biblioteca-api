@@ -1,21 +1,22 @@
 package gov.caixa.resource.dto.request;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class ClienteRequest {
+    @NotBlank
+    private String nome;
 
-    @NotNull
+    @NotBlank
     private String cpf;
 
-    @NotNull
+    @NotBlank
     private String email;
 
-    @NotNull
+    @NotBlank
     private String telefone;
 }

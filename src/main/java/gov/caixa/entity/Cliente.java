@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@DiscriminatorValue("CLIENTE")
 @Table(name = "tbl_cliente")
+@DiscriminatorValue("CLIENTE")
 public class Cliente extends Pessoa {
     @Column(name = "CPF", nullable = false)
     private String cpf;

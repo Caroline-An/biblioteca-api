@@ -18,7 +18,7 @@ import jakarta.inject.Inject;
 @RequiredArgsConstructor
 public class AutorResource {
     private final AutorService autorService;
-    private final Validator validator;
+
     @Inject
     Logger log;
 
