@@ -1,6 +1,5 @@
 package gov.caixa.entity;
 
-import biblioteca.entity.Categorias;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -11,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "tbl_livros")
 public class Livros {
     @Id
     @Size(max = 20)
@@ -19,7 +19,7 @@ public class Livros {
     private int isbn;
 
     @Column(name = "TÍTULO", nullable = false)
-    private String titulo;
+    private String title;
 
     @Column(name = "NÚMERO DE PÁGINAS", nullable = false)
     private int numeroDePaginas;
@@ -31,10 +31,11 @@ public class Livros {
     @Column(name = "CATEGORIA", nullable = false, length = 30)
     private Categorias categoria;
 
-    @Column(name = "EDITORA")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "editora_id", nullable = false,
-            foreignKey = @ForeignKey(name = "fk_livro_editora"))
+    @JoinColumn(
+            name = "EDITORA",
+            referencedColumnName = "ID",
+            nullable = false)
     private Editoras editora;
 
 }
