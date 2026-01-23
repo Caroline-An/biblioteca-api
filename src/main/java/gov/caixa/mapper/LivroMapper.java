@@ -1,4 +1,4 @@
 package gov.caixa.mapper;
 
-public class LivrosMapper {
+public class LivroMapper {
 }

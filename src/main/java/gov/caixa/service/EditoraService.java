@@ -1,4 +1,4 @@
 package gov.caixa.service;
 
-public class LivrosService {
+public class EditoraService {
 }

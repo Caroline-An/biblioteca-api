@@ -1,9 +1,9 @@
 package gov.caixa.repository;
 
-import gov.caixa.entity.Autores;
+import gov.caixa.entity.Pessoa;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class AutoresRepository implements PanacheRepository<Autores> {
+public class PessoaRepository implements PanacheRepository<Pessoa> {
 }

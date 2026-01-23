@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_livros")
-public class Livros {
+public class Livro {
     @Id
     @Size(max = 20)
     @Column(name = "ID", nullable = false)
@@ -29,13 +29,13 @@ public class Livros {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "CATEGORIA", nullable = false, length = 30)
-    private Categorias categoria;
+    private Categoria categoria;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(
             name = "EDITORA",
             referencedColumnName = "ID",
             nullable = false)
-    private Editoras editora;
+    private Editora editora;
 
 }

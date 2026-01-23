@@ -1,6 +1,6 @@
 package gov.caixa.resource.dto.request;
 
-import jakarta.validation.constraints.NotBlank;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -9,9 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class AutorRequest {
-//    @NotNull
-//    private Long id;
-
     @NotNull
     private String nome;
 

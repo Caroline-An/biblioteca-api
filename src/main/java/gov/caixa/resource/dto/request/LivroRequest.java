@@ -1,8 +1,8 @@
 package gov.caixa.resource.dto.request;
 
 
-import gov.caixa.entity.Categorias;
-import gov.caixa.entity.Editoras;
+import gov.caixa.entity.Categoria;
+import gov.caixa.entity.Editora;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,12 +30,12 @@ public class LivroRequest {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "CATEGORIA", nullable = false, length = 30)
-    private Categorias categoria;
+    private Categoria categoria;
 
     @NotNull
     @Column(name = "EDITORA")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "editora_id", nullable = false,
             foreignKey = @ForeignKey(name = "fk_livro_editora"))
-    private Editoras editora;
+    private Editora editora;
 }

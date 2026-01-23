@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_emprestimos")
-public class Emprestimos {
+public class Emprestimo {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +20,11 @@ public class Emprestimos {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "LIVRO", referencedColumnName = "ID", nullable = false)
-    private Livros livros;
+    private Livro livro;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "CLIENTE", nullable = false)
-    private Clientes clientes;
+    private Cliente cliente;
 
     @Column(name = "DATA DO EMPRÉSTIMO", nullable = false)
     private LocalDate dataEmprestimo;

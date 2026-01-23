@@ -1,6 +1,6 @@
 package gov.caixa.resource.dto.request;
 
-import gov.caixa.entity.Livros;
+import gov.caixa.entity.Livro;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -16,7 +16,7 @@ public class EmprestimoRequest {
     private int id;
 
     @NotNull
-    private Livros livros;
+    private Livro livro;
 
     @NotNull
     private LocalDate dataEmprestimo;

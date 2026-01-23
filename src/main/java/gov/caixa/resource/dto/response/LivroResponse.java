@@ -1,9 +1,7 @@
 package gov.caixa.resource.dto.response;
 
-import gov.caixa.entity.Categorias;
-import gov.caixa.entity.Editoras;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import gov.caixa.entity.Categoria;
+import gov.caixa.entity.Editora;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +16,7 @@ public class LivroResponse {
     private String title;
     private int numeroDePaginas;
     private int anoPublicacao;
-    private Categorias categoria;
-    private Editoras editora;
+    private Categoria categoria;
+    private Editora editora;
 
 }

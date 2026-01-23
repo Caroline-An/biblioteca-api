@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Null;
 import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
@@ -12,8 +11,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "tbl_autor")
 @DiscriminatorValue("AUTOR")
-public class Autores extends Pessoas {
+public class Autor extends Pessoa {
     @Column(nullable = false, name = "NACIONALIDADE")
     private String nacionalidade;
 

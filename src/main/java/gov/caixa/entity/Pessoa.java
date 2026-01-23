@@ -2,7 +2,6 @@ package gov.caixa.entity;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
@@ -10,9 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_pessoas")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "TIPO")
-public class Pessoas {
+public class Pessoa {
     @Id   @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Long id;

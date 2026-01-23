@@ -3,5 +3,5 @@ package gov.caixa.repository;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class LivrosRepository {
+public class EmprestimoRepository {
 }
