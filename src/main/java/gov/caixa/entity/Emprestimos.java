@@ -18,8 +18,13 @@ public class Emprestimos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "LIVRO", nullable = false)
-    private Livros livro;
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "LIVRO", referencedColumnName = "ID", nullable = false)
+    private Livros livros;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "CLIENTE", nullable = false)
+    private Clientes clientes;
 
     @Column(name = "DATA DO EMPRÉSTIMO", nullable = false)
     private LocalDate dataEmprestimo;

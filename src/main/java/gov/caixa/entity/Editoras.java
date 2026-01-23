@@ -17,12 +17,12 @@ public class Editoras {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "NOME", nullable = false)
     private String nome;
 
-    @Column(name = "CNPJ", nullable = false)
+    @Column(name = "CNPJ", nullable = false, unique = true)
     private String cnpj;
 
     @Column(name = "ENDEREÇO", nullable = false)
