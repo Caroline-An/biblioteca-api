@@ -1,10 +1,7 @@
 package gov.caixa.resource.dto.response;
 
-import gov.caixa.entity.Livros;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import gov.caixa.entity.Cliente;
+import gov.caixa.entity.Livro;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,8 +15,9 @@ import java.time.LocalDate;
 @Builder
 public class EmprestimoResponse {
     private int id;
-    private Livros livros;
+    private Livro livro;
+    private Cliente cliente;
     private LocalDate dataEmprestimo;
     private LocalDate dataPrevistaDevolucao;
-    private boolean devolvido;
+    private Boolean devolvido;
 }

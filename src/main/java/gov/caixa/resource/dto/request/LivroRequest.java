@@ -1,41 +1,32 @@
+
 package gov.caixa.resource.dto.request;
 
-
-import gov.caixa.entity.Categorias;
-import gov.caixa.entity.Editoras;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class LivroRequest {
-    @NotBlank(message = "O campo ISBN não pode ser blank!")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int isbn;
 
-    @NotNull
-    private String title;
+        @NotBlank(message = "O campo ISBN não pode ser blank!")
+        @Size(min = 10, max = 13, message = "ISBN deve ter entre 10 a 13 caracateres")
+        @Pattern(regexp = "^[0-9Xx-]+$", message = "ISBN deve conter dígitos, hífens e opcionalmente X")
+        private String isbn;
 
-    @NotNull
-    private int numeroDePaginas;
+        @NotBlank(message = "O título é obrigatório")
+        private String title;
 
-    @NotNull
-    private int anoPublicacao;
+        @NotNull @Min(1)
+        private Integer numeroDePaginas;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "CATEGORIA", nullable = false, length = 30)
-    private Categorias categoria;
+        @NotNull
+        private Integer anoPublicacao;
 
-    @NotNull
-    @Column(name = "EDITORA")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "editora_id", nullable = false,
-            foreignKey = @ForeignKey(name = "fk_livro_editora"))
-    private Editoras editora;
+        @NotNull
+        private Integer categoriaId; // ✅ volta a ser ID
+
+        @NotNull
+        private Long editoraId;      // ✅ volta a ser ID
 }

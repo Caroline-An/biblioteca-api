@@ -2,17 +2,18 @@ package gov.caixa.entity;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_editoras")
-public class Editoras {
+public class Editora {
 
     @Id
     @Column(name = "ID", nullable = false)

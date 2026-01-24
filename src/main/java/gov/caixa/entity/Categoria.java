@@ -1,6 +1,6 @@
 package gov.caixa.entity;
 
-public enum Categorias {
+public enum Categoria {
     ARTE(1, "Arte"),
     AVENTURA(2, "Aventura"),
     BIOGRAFIA(3, "Biografia"),
@@ -17,7 +17,7 @@ public enum Categorias {
     private final int id;
     private final String descricao;
 
-    Categorias(int id, String descricao) {
+    Categoria(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
@@ -30,7 +30,7 @@ public enum Categorias {
         return descricao;
     }
 
-    public static Categorias porId(int id) {
+    public static Categoria porId(int id) {
         for (var c : values()) {
             if (c.id == id)
                 return c;

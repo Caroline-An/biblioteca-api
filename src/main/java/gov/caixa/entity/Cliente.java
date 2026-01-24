@@ -11,8 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "tbl_cliente")
 @DiscriminatorValue("CLIENTE")
-public class Clientes extends Pessoas{
+@PrimaryKeyJoinColumn(name = "ID")
+public class Cliente extends Pessoa {
     @Column(name = "CPF", nullable = false)
     private String cpf;
 

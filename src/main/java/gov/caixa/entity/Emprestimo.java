@@ -1,9 +1,7 @@
 package gov.caixa.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -12,7 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_emprestimos")
-public class Emprestimos {
+public class Emprestimo {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +18,11 @@ public class Emprestimos {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "LIVRO", referencedColumnName = "ID", nullable = false)
-    private Livros livros;
+    private Livro livro;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "CLIENTE", nullable = false)
-    private Clientes clientes;
+    private Cliente cliente;
 
     @Column(name = "DATA DO EMPRÉSTIMO", nullable = false)
     private LocalDate dataEmprestimo;
@@ -33,5 +31,6 @@ public class Emprestimos {
     private LocalDate dataPrevistaDevolucao;
 
     @Column(name = "STATUS DE DEVOLVIDO", nullable = false)
-    private boolean devolvido;
+    private Boolean devolvido;
+
 }
