@@ -1,9 +1,7 @@
 package gov.caixa.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -33,5 +31,6 @@ public class Emprestimo {
     private LocalDate dataPrevistaDevolucao;
 
     @Column(name = "STATUS DE DEVOLVIDO", nullable = false)
-    private boolean devolvido;
+    private Boolean devolvido;
+
 }

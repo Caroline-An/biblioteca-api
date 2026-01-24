@@ -1,5 +1,6 @@
 package gov.caixa.resource.dto.response;
 
+import gov.caixa.entity.Cliente;
 import gov.caixa.entity.Livro;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,8 @@ import java.time.LocalDate;
 public class EmprestimoResponse {
     private int id;
     private Livro livro;
+    private Cliente cliente;
     private LocalDate dataEmprestimo;
     private LocalDate dataPrevistaDevolucao;
-    private boolean devolvido;
+    private Boolean devolvido;
 }

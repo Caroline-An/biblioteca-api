@@ -1,24 +1,34 @@
 package gov.caixa.resource.dto.request;
 
+import gov.caixa.entity.Cliente;
 import gov.caixa.entity.Livro;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
 
-public record EmprestimoRequest(
-        @NotNull
-        int id,
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class EmprestimoRequest {
 
-        @NotNull
-        Livro livro,
+    @NotNull
+    private Livro livrowq;
 
-        @NotNull
-        LocalDate dataEmprestimo,
+    @NotNull
+    private Cliente cliente;
 
-        @NotNull
-        LocalDate dataPrevisaDevolucao,
+    @NotNull
+    Livro livro;
 
-        @NotNull
-        boolean devolvido) {
+    @NotNull
+    private LocalDate dataEmprestimo;
+
+    @NotNull
+    private LocalDate dataPrevistaDevolucao;
+
+    @NotNull
+    private boolean devolvido;
 }
