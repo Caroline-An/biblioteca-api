@@ -1,17 +1,17 @@
+
 package gov.caixa.resource;
 
 import gov.caixa.mapper.LivroMapper;
 import gov.caixa.resource.dto.request.LivroRequest;
-import gov.caixa.resource.dto.response.LivroResponse;
 import gov.caixa.service.LivroService;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
 
-import static gov.caixa.mapper.LivroMapper.toEntity;
-import static gov.caixa.mapper.LivroMapper.toResponse;
-
 @Path("livros")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
 public class LivroResource {
 
@@ -19,30 +19,33 @@ public class LivroResource {
 
     @GET
     public Response findAll() {
-        return Response.ok(livroService.listAll().stream().map(LivroMapper::toResponse)).build();
+        var body = livroService.listAll()
+                .stream()
+                .map(LivroMapper::toResponse)
+                .toList();
+        return Response.ok(body).build();
     }
 
     @GET
-    @Path("/{isbn}")
-    public Response findById(@PathParam("isbn") long isbn) {
-        var livro = livroService.findById(isbn);
-
-        if (livro == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-
-        return Response.ok(toResponse(livro)).build();
+    @Path("/{id}")
+    public Response findById(@PathParam("id") long id) {
+        var livro = livroService.findById(id);
+        if (livro == null) return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok(LivroMapper.toResponse(livro)).build();
     }
 
     @POST
     public Response create(LivroRequest request) {
-        return Response.ok(livroService.create(request)).build();
+        var created = livroService.create(request);
+        return Response.status(Response.Status.CREATED)
+                .entity(LivroMapper.toResponse(created))
+                .build();
     }
 
     @PUT
     @Path("/{id}")
-    public Response update(@PathParam("isbn") long isbn, LivroRequest request) {
-        livroService.update(toEntity(request, isbn));
+    public Response update(@PathParam("id") long id, LivroRequest request) {
+        livroService.update(request, id);
         return Response.noContent().build();
     }
 }

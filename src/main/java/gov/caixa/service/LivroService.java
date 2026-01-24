@@ -1,3 +1,4 @@
+
 package gov.caixa.service;
 
 import gov.caixa.entity.Categoria;
@@ -5,66 +6,73 @@ import gov.caixa.entity.Editora;
 import gov.caixa.entity.Livro;
 import gov.caixa.repository.LivroRepository;
 import gov.caixa.resource.dto.request.LivroRequest;
-import lombok.RequiredArgsConstructor;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static gov.caixa.mapper.LivroMapper.toEntity;
-
-@RequiredArgsConstructor
+@ApplicationScoped
 public class LivroService {
-    private final LivroRepository livroRepository;
+
+    @Inject
+    LivroRepository livroRepository;
 
     public List<Livro> listAll() {
         return livroRepository.listAll();
     }
 
-    public Livro findById(long isbn) {
-        return livroRepository.findById(isbn);
+    public Livro findById(long id) {
+        return livroRepository.findById(id);
     }
 
+    @Transactional
     public Livro create(LivroRequest request) {
-        Livro livro = toEntity(request);
+        var categoria = Categoria.porId(request.getCategoriaId());
+        if (categoria == null) {
+            throw new NoSuchElementException("Categoria não encontrada");
+        }
+
+        Editora editora = new Editora();
+        editora.setId(request.getEditoraId());
+
+        Livro livro = new Livro();
+        livro.setIsbn(request.getIsbn());
+        livro.setTitle(request.getTitle());
+        livro.setNumeroDePaginas(request.getNumeroDePaginas());
+        livro.setAnoPublicacao(request.getAnoPublicacao());
+        livro.setCategoria(categoria);
+        livro.setEditora(editora);
+
         livroRepository.persist(livro);
         return livro;
     }
 
-    public void update(LivroRequest request, long isbn) {
-        Livro livro = livroRepository.findById(isbn);
+    @Transactional
+    public void update(LivroRequest request, long id) {
+        Livro livro = livroRepository.findById(id);
+        if (livro == null) throw new NoSuchElementException("Livro não encontrado");
 
-        if (livro == null) {
-            throw new NoSuchElementException("Livro não encontrado");
+        if (request.getTitle() != null && !request.getTitle().isBlank()) {
+            livro.setTitle(request.getTitle());
         }
-
-        if (!request.title().isBlank()) {
-            livro.setTitle(request.title());
+        if (request.getNumeroDePaginas() != null) {
+            livro.setNumeroDePaginas(request.getNumeroDePaginas());
         }
-
-        if (request.numeroDePaginas() != null) {
-            livro.setNumeroDePaginas(request.numeroDePaginas());
+        if (request.getAnoPublicacao() != null) {
+            livro.setAnoPublicacao(request.getAnoPublicacao());
         }
-
-        if (request.anoPublicacao() != null) {
-            //TODO: validar ano de publicação
-            livro.setAnoPublicacao(request.anoPublicacao());
+        if (request.getCategoriaId() != null) {
+            var nova = Categoria.porId(request.getCategoriaId());
+            if (nova == null) throw new NoSuchElementException("Categoria não encontrada");
+            livro.setCategoria(nova);
         }
-
-        if (request.categoriaId() != null) {
-            var novaCategoria = Categoria.porId(request.categoriaId());
-
-            if (novaCategoria == null) {
-                throw new NoSuchElementException("Categoria não encontrada");
-            }
-
-            livro.setCategoria(novaCategoria);
-
+        if (request.getEditoraId() != null) {
+            Editora e = new Editora();
+            e.setId(request.getEditoraId());
+            livro.setEditora(e);
         }
-
-        if(request.editoraId() != null){
-            livro.setEditora(Editora.builder().id(Long.valueOf(request.editoraId())).build());
-        }
-
-        livroRepository.persist(livro);
+        // @Transactional: flush automático
     }
 }

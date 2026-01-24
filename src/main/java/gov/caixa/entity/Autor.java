@@ -1,9 +1,6 @@
 package gov.caixa.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
@@ -13,6 +10,7 @@ import lombok.*;
 @Entity
 @Table(name = "tbl_autor")
 @DiscriminatorValue("AUTOR")
+@PrimaryKeyJoinColumn(name = "ID")
 public class Autor extends Pessoa {
     @Column(nullable = false, name = "NACIONALIDADE")
     private String nacionalidade;

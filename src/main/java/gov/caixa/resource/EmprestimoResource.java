@@ -2,13 +2,13 @@ package gov.caixa.resource;
 
 import gov.caixa.resource.dto.request.EmprestimoRequest;
 import gov.caixa.service.EmprestimoService;
-import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.RequiredArgsConstructor;
-import java.util.logging.Logger;
+import org.jboss.logging.Logger;
+import jakarta.inject.Inject;
 
 @Path("/emprestimos")
 @Produces(MediaType.APPLICATION_JSON)

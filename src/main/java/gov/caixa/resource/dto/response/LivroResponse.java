@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class LivroResponse {
-    private int isbn;
+    private int id;
+    private String isbn;
     private String title;
-    private int numeroDePaginas;
-    private int anoPublicacao;
+    private Integer numeroDePaginas;
+    private Integer anoPublicacao;
     private Categoria categoria;
     private Editora editora;
 
