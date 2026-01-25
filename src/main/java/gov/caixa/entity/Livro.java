@@ -10,22 +10,24 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
-
-@Table(name = "tbl_livros",
-        uniqueConstraints = @UniqueConstraint(name = "uk_livro_isbn", columnNames = "isbn"))
-
+@Table(
+        name = "tbl_livros",
+        uniqueConstraints = @UniqueConstraint(name = "uk_livro_isbn", columnNames = "ISBN")
+)
 public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(name = "ISBN", nullable = false, length = 13)
-    @Size(min = 10, max = 13, message = "ISBN deve ter entre e 13 caracteres")
+    @Column(name = "ISBN", nullable = false, length = 17) // aumentar para 17
+    @Size(min = 10, max = 17, message = "ISBN deve ter entre 10 e 17 caracteres (com hífens)")
     @Pattern(regexp = "^[0-9Xx-]+$", message = "ISBN deve conter dígitos, hífens e opcionalmente X")
     private String isbn;
 
-    @Column(name = "TÍTULO", nullable = false)
+
+    @Column(name = "TITULO", nullable = false) // sem acento
     private String title;
 
     @Column(name = "NUMERO_DE_PAGINAS", nullable = false)
@@ -39,10 +41,7 @@ public class Livro {
     private Categoria categoria;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(
-            name = "EDITORA_ID",
-            referencedColumnName = "ID",
-            nullable = false)
+    @JoinColumn(name = "EDITORA_ID", referencedColumnName = "ID", nullable = false)
     private Editora editora;
-
 }
+
