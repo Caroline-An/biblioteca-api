@@ -1,34 +1,22 @@
+
 package gov.caixa.resource.dto.request;
 
-import gov.caixa.entity.Cliente;
-import gov.caixa.entity.Livro;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.LocalDate;
-
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class EmprestimoRequest {
 
     @NotNull
-    private Livro livrowq;
+    private Long livroId;
 
     @NotNull
-    private Cliente cliente;
+    private Long clienteId;
 
-    @NotNull
-    Livro livro;
-
-    @NotNull
-    private LocalDate dataEmprestimo;
-
-    @NotNull
-    private LocalDate dataPrevistaDevolucao;
-
-    @NotNull
-    private boolean devolvido;
+    @NotBlank
+    private String dataPrevistaDevolucao;
 }

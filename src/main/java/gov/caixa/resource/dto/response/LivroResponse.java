@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class LivroResponse {
-    private int id;
+    private Long id;
     private String isbn;
     private String title;
     private Integer numeroDePaginas;

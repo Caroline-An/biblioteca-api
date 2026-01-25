@@ -1,7 +1,11 @@
 
 package gov.caixa.resource.dto.request;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
@@ -11,7 +15,7 @@ import lombok.*;
 public class LivroRequest {
 
         @NotBlank(message = "O campo ISBN não pode ser blank!")
-        @Size(min = 10, max = 13, message = "ISBN deve ter entre 10 a 13 caracateres")
+        @Size(min = 10, max = 17, message = "ISBN deve ter entre 10 e 17 caracteres (com hífens)")
         @Pattern(regexp = "^[0-9Xx-]+$", message = "ISBN deve conter dígitos, hífens e opcionalmente X")
         private String isbn;
 
@@ -25,8 +29,8 @@ public class LivroRequest {
         private Integer anoPublicacao;
 
         @NotNull
-        private Integer categoriaId; // ✅ volta a ser ID
+        private Integer categoriaId;
 
         @NotNull
-        private Long editoraId;      // ✅ volta a ser ID
+        private Long editoraId;
 }

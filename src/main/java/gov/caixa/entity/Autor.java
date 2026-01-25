@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tbl_autor")
+@Table(name = "tbl_autores")
 @DiscriminatorValue("AUTOR")
 @PrimaryKeyJoinColumn(name = "ID")
 public class Autor extends Pessoa {

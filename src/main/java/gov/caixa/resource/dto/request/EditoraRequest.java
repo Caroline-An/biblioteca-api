@@ -1,35 +1,27 @@
+
 package gov.caixa.resource.dto.request;
 
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class EditoraRequest {
 
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotNull
+    @NotBlank
     private String nome;
 
-    @NotNull
+    @NotBlank
     private String cnpj;
 
-    @NotNull
+    @NotBlank
     private String endereco;
 
-    @NotNull
+    @NotBlank
     private String telefone;
 
-    @NotNull
+    @NotBlank
     private String email;
 }

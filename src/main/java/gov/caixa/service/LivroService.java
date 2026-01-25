@@ -27,6 +27,7 @@ public class LivroService {
         return livroRepository.findById(id);
     }
 
+
     @Transactional
     public Livro create(LivroRequest request) {
         var categoria = Categoria.porId(request.getCategoriaId());
@@ -34,11 +35,19 @@ public class LivroService {
             throw new NoSuchElementException("Categoria não encontrada");
         }
 
+        // Normalizar ISBN para evitar violações por hífens
+        String isbn = request.getIsbn();
+        if (isbn != null) {
+            isbn = isbn.trim();
+            // Se quiser persistir sem hífens, descomente:
+            // isbn = isbn.replace("-", "").toUpperCase();
+        }
+
         Editora editora = new Editora();
         editora.setId(request.getEditoraId());
 
         Livro livro = new Livro();
-        livro.setIsbn(request.getIsbn());
+        livro.setIsbn(isbn);
         livro.setTitle(request.getTitle());
         livro.setNumeroDePaginas(request.getNumeroDePaginas());
         livro.setAnoPublicacao(request.getAnoPublicacao());
@@ -48,6 +57,7 @@ public class LivroService {
         livroRepository.persist(livro);
         return livro;
     }
+
 
     @Transactional
     public void update(LivroRequest request, long id) {
