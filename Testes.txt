@@ -1,0 +1,151 @@
+rotas a testar:
+clientes: GET, POST, PUT, DELETE
+{
+  "nome": "Maria Souza",
+  "cpf": "12345678901",
+  "email": "maria@exemplo.com",
+  "telefone": "61999990000"
+}
+{
+  "nome": "Claudia Joana",
+  "cpf": "23567798709",
+  "email": "claudia@exemplo.com",
+  "telefone": "77665473689"
+}
+{
+  "nome": "José Fernandes",
+  "cpf": "76328898767",
+  "email": "jose@exemplo.com",
+  "telefone": "99228778727"
+}
+{
+  "nome": "Mario Eluisio",
+  "cpf": "75846637289",
+  "email": "mario@exemplo.com",
+  "telefone": "22889746359"
+}
+
+
+autores: GET, POST, PUT, DELETE
+
+{
+  "nome": "Lewis Hamilton",
+  "nacionalidade":"Inglês"
+}
+{
+  "nome": "Carlos Sainz",
+  "nacionalidade":"Espanhol"
+}
+{
+  "nome": "Oscar Piastri",
+  "nacionalidade":"Australiano"
+}
+
+
+editoras:  GET, POST, PUT, DELETE
+
+{
+  "nome": "Galera Record",
+  "cnpj": "45.987.321/0001-77",
+  "endereco": "Rua Argentina, 171 - São Cristóvão, Rio de Janeiro - RJ",
+  "telefone": "(21) 3882-8200",
+  "email": "contato@galerarecord.com.br"
+}
+
+{
+  "nome": "HarperCollins Brasil",
+  "cnpj": "08.765.432/0001-10",
+  "endereco": "Av. Paulista, 1000 - Bela Vista, São Paulo - SP",
+  "telefone": "(11) 3003-4455",
+  "email": "suporte@harpercollins.com.br"
+}
+
+{
+  "nome": "Intrínseca",
+  "cnpj": "12.345.678/0001-90",
+  "endereco": "Av. das Américas, 3500 - Barra da Tijuca, Rio de Janeiro - RJ",
+  "telefone": "(21) 4002-8922",
+  "email": "contato@intrinseca.com.br"
+}
+
+
+{
+  "nome": "Rocco",
+  "cnpj": "33.456.789/0001-12",
+  "endereco": "Rua do Ouvidor, 123 - Centro, Rio de Janeiro - RJ",
+  "telefone": "(21) 2222-3333",
+  "email": "atendimento@rocco.com.br"
+}
+
+{
+  "nome": "Companhia das Letras",
+  "cnpj": "61.152.998/0001-50",
+  "endereco": "Rua Bandeira Paulista, 702 - Itaim Bibi, São Paulo - SP",
+  "telefone": "(11) 3078-4300",
+  "email": "contato@companhiadasletras.com.br"
+}
+
+
+livros:  GET, POST, PUT, DELETE
+
+{
+  "isbn": "978-85-333-0227-1",
+  "title": "Cinderela",
+  "numeroDePaginas": 90,
+  "anoPublicacao": 1998,
+  "categoriaId": 1,
+  "editoraId": 1
+}
+{
+  "isbn": "978-85-333-0227-2",
+  "title": "Jasmin",
+  "numeroDePaginas": 90,
+  "anoPublicacao": 1998,
+  "categoriaId": 1,
+  "editoraId": 2
+}
+{
+  "isbn": "978-85-333-0227-3",
+  "title": "Jasmin",
+  "numeroDePaginas": 90,
+  "anoPublicacao": 1998,
+  "categoriaId": 1,
+  "editoraId": 3
+}
+{
+  "isbn": "978-85-333-0227-4",
+  "title": "Jasmin",
+  "numeroDePaginas": 90,
+  "anoPublicacao": 1998,
+  "categoriaId": 1,
+  "editoraId": 1
+}
+
+
+emprestimos: GET, POST, PUT, DELETE
+
+
+{
+  "livroId": 1,
+  "clienteId": 1,
+  "dataPrevistaDevolucao": "2026-04-10"
+}
+
+{
+  "livroId": 2,
+  "clienteId": 2,
+  "dataPrevistaDevolucao": "2026-04-10"
+}
+
+{
+  "livroId": 3,
+  "clienteId": 1,
+  "dataPrevistaDevolucao": "2026-04-10"
+}
+
+{
+  "livroId": 4,
+  "clienteId": 2,
+  "dataPrevistaDevolucao": "2026-04-10"
+}
+
